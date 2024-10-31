@@ -39,9 +39,8 @@ def get_user_choice():
                 print('You did not enter a valid selection! Please enter R, P, S')
                 continue
             else:
-                 print(f'Thanks, you selected {choice}!\n Let the battle begin!')
+                 print(f'Thanks, you selected {choice}!\nLet the battle begin!')
                  break
-        print(f'Thanks, you selected {choice}!\n Let the battle begin!')
         return choice
     
     # get_computer_choice(): Randomly assign a choice to the computer (using random.choice() on a list of ["rock", "paper", "scissors"]).
@@ -76,8 +75,8 @@ def determine_winner(user, computer):
     # play_again(): Prompt to check if the user wants to play another round.
 def play_again():
     while True:
-        answer = input('Do you want to play again? "Y" or "N"? \n').upper() == 'N'
-        if input('Do you want to play again? "Y" or "N"? \n').upper() == 'Y':
+        answer = input('Do you want to play again? "Y" or "N"? \n').upper()
+        if answer == 'Y':
             return True
         elif answer == 'N':
             return False
