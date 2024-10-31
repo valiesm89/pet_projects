@@ -61,7 +61,7 @@ def determine_winner(user, computer):
     elif user == 'S' and computer == 'P':
         print(f'You Won with your choice: {user} against computer choice: {computer}')
     elif user == computer:
-        print('You guys tied with your choice: {user} against computer choice: {computer}!!!')
+        print(f'You guys tied with your choice: {user} against computer choice: {computer}!!!')
     else:
         print(f'You lost with your choice: {user} against computer choice: {computer}')
 
