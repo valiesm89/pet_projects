@@ -9,44 +9,47 @@ from tkinter import *
 import random
 from PIL import ImageTk, Image
 from tkinter import font
+import os
 
 # create an instance of Tk and assign it to root
 root = Tk()
 
-root.iconbitmap('icon.PNG')
-root.title('Rock Paper Scissors')
+icon_path = os.path.join(os.path.dirname(__file__), 'icon.PNG')
+
+root.iconbitmap(os.path.join(os.path.dirname(__file__), 'icon.PNG'))
+root.title(os.path.join(os.path.dirname(__file__), 'Rock Paper Scissors'))
 root.resizable(width=False, height=False)
 
 # global variable click
 click = True
 
 # rock_hand img
-rock = PhotoImage(file= 'rock_edi.PNG')
+rock = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'rock_edi.PNG'))
 
 # scissor_hand img
-scissor = PhotoImage(file= 'scissor_edi.PNG')
+scissor = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'scissor_edi.PNG'))
 
 # paper_hand img
-paper = PhotoImage(file= 'paper_edi.PNG')
+paper = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'paper_edi.PNG'))
 
 # win img
-win_boy = PhotoImage(file= 'win_boy.PNG')
+win_boy = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'win_boy.PNG'))
 
 # lose img
-lose = PhotoImage(file= 'lose.PNG')
+lose = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'lose.PNG'))
 
 # tie img
-tie = PhotoImage(file= 'tie.PNG')
+tie = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'tie.PNG'))
 
 # question mark
-img_guess_p = PhotoImage(file='guess_boy.PNG')
-img_guess_c = PhotoImage(file = 'guess_computer.PNG')
+img_guess_p = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
+img_guess_c = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'guess_computer.PNG'))
 
 # comparison operators
-img_less = PhotoImage(file= 'less.PNG')
-img_greater = PhotoImage(file= 'greater.PNG')
-img_equal = PhotoImage(file = 'equal.PNG')
-img_comparison = PhotoImage(file= 'comparison.PNG')
+img_less = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'less.PNG'))
+img_greater = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'greater.PNG'))
+img_equal = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'equal.PNG'))
+img_comparison = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'comparison.PNG'))
 
 # create labels
 guessp = Label(root, image= img_guess_p)
