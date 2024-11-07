@@ -77,9 +77,6 @@ while True:
     # Check who won using determine_winner().
     determine_winner(user_choice, computer_choice)
 
-    # Display the outcome.
-    ##Skipped for now as it is integrated in determine_winner()
-
     #check if player wants to continue
     if not play_again():
         print('Thanks for playing! See you next time.')
