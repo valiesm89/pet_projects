@@ -74,7 +74,7 @@ def play():
 
     # create subtitle label
     subtitle_label = Label(root, text="Your choice vs. Computer choice:", font=custom_font, fg="blue")
-    subtitle_label.grid(row=2, column=0, columnspan=3, sticky=W, padx=10)
+    subtitle_label.grid(row=2, column=1, columnspan=3, sticky=W, padx=10)
 
     # create subtitle label
     subtitle_label = Label(root, text="Emma & Edi", font=custom_font, fg="blue")
