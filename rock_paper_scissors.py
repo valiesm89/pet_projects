@@ -28,7 +28,7 @@ def get_user_choice():
                 print('You did not enter a valid selection! Please enter R, P, S')
                 continue
             else:
-                 print(f'Thanks, you selected {choice}! yLet the battle begin!')
+                 print(f'Thanks, you selected {choice}! Let the battle begin!')
                  break
         return choice
     
