@@ -13,60 +13,102 @@ import os
 
 # create an instance of Tk and assign it to root
 root = Tk()
-
-icon_path = os.path.join(os.path.dirname(__file__), 'icon.PNG')
-
 root.iconbitmap(os.path.join(os.path.dirname(__file__), 'icon.PNG'))
 root.title(os.path.join(os.path.dirname(__file__), 'Rock Paper Scissors'))
 root.resizable(width=False, height=False)
 
 # global variable click
 click = True
-
-# rock_hand img
-rock = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'rock_edi.PNG'))
-
-# scissor_hand img
-scissor = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'scissor_edi.PNG'))
-
-# paper_hand img
-paper = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'paper_edi.PNG'))
-
-# win img
-win_boy = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'win_boy.PNG'))
-
-# lose img
-lose = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'lose.PNG'))
-
-# tie img
-tie = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'tie.PNG'))
-
-# question mark
-img_guess_p = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
-img_guess_c = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'guess_computer.PNG'))
-
-# comparison operators
-img_less = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'less.PNG'))
-img_greater = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'greater.PNG'))
-img_equal = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'equal.PNG'))
-img_comparison = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'comparison.PNG'))
+selected_gender = 'boy'
 
 # create labels
-guessp = Label(root, image= img_guess_p)
-guessc = Label(root, image= img_guess_c)
-less = Label(root, image= img_less)
-greater = Label(root, image= img_greater)
-equal = Label(root, image= img_equal)
-comparison = Label(root,image= img_comparison)
+guessp = Label(root)
+guessc = Label(root)
+less = Label(root)
+greater = Label(root)
+equal = Label(root)
+comparison = Label(root)
 
 # button variables
 rHbutton = ''
 pHbutton = ''
 sHbutton = ''
 
+# load gender images
+def load_images(gender):
+    global rock, paper, scissor, img_guess_p, img_guess_c, lose, tie
+    if gender == 'boy':
+        rock = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'rock_edi.PNG'))
+        paper = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'paper_edi.PNG'))
+        scissor = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'scissor_edi.PNG'))
+        img_guess_p = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
+        
+        
+    else:
+        rock = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'rock_emma.PNG'))
+        paper = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'paper_emma.PNG'))
+        scissor = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'scissor_emma.PNG'))
+        img_guess_p = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'guess_girl.PNG'))
+        
+
+
+    # global images
+    img_guess_c = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'guess_computer.PNG'))
+    #lose = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'lose.PNG'))
+    #tie = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'tie.PNG'))
+
+
+# comparison operators
+def load_comp_imgs():
+    global img_less, img_greater, img_equal, img_comparison
+    img_less = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'less.PNG'))
+    img_greater = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'greater.PNG'))
+    img_equal = PhotoImage(file = os.path.join(os.path.dirname(__file__), 'equal.PNG'))
+    img_comparison = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'comparison.PNG'))
+
+
+# init screen
+def init_screen():
+    global pick_girl, pick_boy
+
+    pick_boy = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'superhero_boy.PNG'))
+    pick_girl = PhotoImage(file= os.path.join(os.path.dirname(__file__), 'superhero_girl.PNG'))
+
+    #clear
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    #label and button
+    welcome_label = Label(root, text="Choose a Character", font=("Helvetica", 18))
+    welcome_label.pack(pady=20)
+    
+    boy_button = Button(root, image = pick_boy, command=lambda: start_game("boy"))
+    girl_button = Button(root, image = pick_girl , command=lambda: start_game("girl"))
+    
+    boy_button.pack(side=LEFT, padx=20)
+    girl_button.pack(side=RIGHT, padx=20)
+
+# start game with gender adjusted imgs
+def start_game(gender):
+    global selected_gender
+    selected_gender = gender
+    load_images(gender)
+    game_screen()
+
+# game screen function
+def game_screen():
+    global rHbutton, pHbutton,sHbutton,guessp, guessc, equal
+
+    #clear screen
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    #set up game layout
+    play()
+
 # define functions
 def play():
-    global rHbutton, pHbutton,sHbutton,guessp, guessc, equal
+    global rHbutton, pHbutton,sHbutton,guessp, guessc, equal, comparison
 
     # define custom font
     custom_font = font.Font(family="Helvetica", size=16, weight="bold")
@@ -87,13 +129,13 @@ def play():
     subtitle_label = Label(root, text="Computer", font=custom_font, fg="green")
     subtitle_label.grid(row=4, column=2, columnspan=3, sticky=W, padx=10)
 
+    # buttons
     rHbutton = Button(root,image= rock, command = lambda:get_user_choice('rock'))
     pHbutton = Button(root,image= paper, command = lambda:get_user_choice('paper'))
     sHbutton = Button(root,image= scissor, command = lambda:get_user_choice('scissor'))
-
-
     exitbutton = Button(root, text= 'Exit Game!',height=10, width=20, fg= 'red', command=root.quit)
 
+    # place buttons
     rHbutton.grid(row= 1,column=0)
     pHbutton.grid(row=1, column=1)
     sHbutton.grid(row=1, column=2)
@@ -105,6 +147,7 @@ def play():
     exitbutton.grid(row=4, column=1)
     
 
+    
 def get_computer_choice():
     comp_choice = random.choice(choices)
     return comp_choice
@@ -159,20 +202,8 @@ def get_user_choice(yourchoice):
 
         guessc.config(image = choice_images[comp_choice])
 
-                
-
-    # else:
-    #     if comp_choice == 'rock' or comp_choice == 'paper' or comp_choice == 'scissor':
-    #         rHbutton.configure(image=rock)
-    #         pHbutton.configure(image=paper)
-    #         sHbutton.configure(image=scissor)
-    #         click = True
-
-            
-          
-
-# call to game function
-play()
+# call for init_screen
+init_screen()
 
 # create a window
 root.mainloop()
