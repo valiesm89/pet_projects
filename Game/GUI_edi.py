@@ -135,9 +135,7 @@ def play():
     # Update labels with images
     guessp = Label(root, image=img_guess_p)
     guessc = Label(root, image=img_guess_c)
-    less = Label(root, image=img_less)
-    greater = Label(root, image=img_greater)
-    equal = Label(root, image=img_equal)
+    #equal = Label(root, image=img_equal)
     comparison = Label(root, image=img_comparison)
 
     guessp.grid(row=3, column=0)
