@@ -41,12 +41,12 @@ def load_images(gender):
         rock = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'rock_edi.PNG'))
         paper = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'paper_edi.PNG'))
         scissor = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'scissor_edi.PNG'))
-        #img_guess_p = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
+        img_guess_p = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
     else:
         rock = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'rock_emma.PNG'))
         paper = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'paper_emma.PNG'))
         scissor = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'scissor_emma.PNG'))
-        #img_guess_p = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_girl.PNG'))
+        img_guess_p = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_girl.PNG'))
 
     # global images
     img_guess_c = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_computer.PNG'))
@@ -96,8 +96,8 @@ def game_screen():
     for widget in root.winfo_children():
         widget.destroy()
 
-#     # set up game layout
-#     play()
+    # set up game layout
+    play()
 
 # # define functions
 # def play():
@@ -132,10 +132,6 @@ def game_screen():
 #     rHbutton.grid(row=1, column=0)
 #     pHbutton.grid(row=1, column=1)
 #     sHbutton.grid(row=1, column=2)
-
-#     img_guess_p = PhotoImage(file=os.path.join(os.path.dirname(__file__), 'guess_boy.PNG'))
-    
-    
 
 #     # Update labels with images
 #     guessp.config(image=img_guess_p)
