@@ -12,7 +12,7 @@ import os
 
 # create an instance of Tk and assign it to root
 root = Tk()
-root.iconbitmap(os.path.join(os.path.dirname(__file__), 'icon.PNG'))
+#root.iconbitmap(os.path.join(os.path.dirname(__file__), 'icon.PNG'))
 root.title('Rock Paper Scissors')
 root.resizable(width=False, height=False)
 
